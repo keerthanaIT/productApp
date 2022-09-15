@@ -138,16 +138,14 @@ const CharacterComponent = (allChar) => {
 			<>
 				<div className="col" key={id}>
 					<div className="card h-100 shadow-sm">
-						<a href='#'>
-							<img src={image} className="card-img-top" alt="" />
-						</a>
-						<div className="card-body">
 							<Link to={`/character_details/${id}`}>
+							<img src={image} className="card-img-top" alt="" />
+							</Link>
+						<div className="card-body">
 								<h6 className="card-title text-center">{name}</h6>
 								<p className="card-text text-center">Gender: {gender}</p>
 								<p className="card-text text-center">Species: {species}</p>
 								<p className="card-text text-center">Status: {status}</p>
-							</Link>
 							<a onClick={() => handleFav(character)}>{favCharacter.includes(character.id) ?
 								<img
 									src={require('../../asserts/heart.svg').default}
