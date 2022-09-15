@@ -138,36 +138,27 @@ const CharacterComponent = (allChar) => {
 			<>
 				<div className="col" key={id}>
 					<div className="card h-100 shadow-sm">
-							<Link to={`/character_details/${id}`}>
+						<Link to={`/character_details/${id}`}>
 							<img src={image} className="card-img-top" alt="" />
-							</Link>
+						</Link>
 						<div className="card-body">
-								<h6 className="card-title text-center">{name}</h6>
-								<p className="card-text text-center">Gender: {gender}</p>
-								<p className="card-text text-center">Species: {species}</p>
-								<p className="card-text text-center">Status: {status}</p>
-							<a onClick={() => handleFav(character)}>{favCharacter.includes(character.id) ?
-								<img
-									src={require('../../asserts/heart.svg').default}
-									alt="empty"
-								/>
-								: <img
-									src={require('../../asserts/empty.svg').default}
-									alt="empty"
-								/>}</a>
-							{/* {tempFav ?
-								<img
-									src={require('../../asserts/heart.svg').default}
-									alt="empty"
-									onClick={() => removeFav(id)}
-								/> :
-								<img
-									src={require('../../asserts/empty.svg').default}
-									alt="empty"
-									onClick={() => addFav(id)}
-								/>} */}
+							<h6 className="card-title text-center">{name}</h6>
+							<p className="card-text text-center">Gender: {gender}</p>
+							<p className="card-text text-center">Species: {species}</p>
+							<p className="card-text text-center">Status: {status}</p>
+							<a onClick={() => handleFav(character)}>
+								{favCharacter.includes(character.id) ?
+									<img
+										src={require('../../asserts/heart.svg').default}
+										alt="empty"
+									/>
+									: <img
+										src={require('../../asserts/empty.svg').default}
+										alt="empty"
+									/>
+								}
+							</a>
 						</div>
-
 					</div>
 				</div>
 			</>
@@ -176,8 +167,6 @@ const CharacterComponent = (allChar) => {
 
 	return (
 		<>
-
-
 			<h3>Filter</h3>
 			<select
 				className="px-2 py-1 border mb-4"
