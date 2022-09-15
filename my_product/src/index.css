@@ -1,11 +1,35 @@
 .card{
-  cursor: pointer;
-  padding: 1rem;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+ border: 0;
+  border-radius: 1rem;
 }
+.card-img,
+.card-img-top {
+    border-top-left-radius: calc(1rem - 1px);
+    border-top-right-radius: calc(1rem - 1px);
+}
+.card-img-top {
+  width: 100%;
+  min-height: 250px;
+  max-height: 250px;
+  object-fit: contain;
+  padding: 30px;
+}
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
 .col-md-3{
   padding-bottom: 2rem;
 }
 .card a{
   color: black;
   text-decoration: none
+}
+
+.container-fluid {
+  max-width: 1400px;
+
 }

@@ -25,6 +25,13 @@ const CharacterComponent = (allChar) => {
 		{
 			"value": "Female",
 			"label": "Female"
+		}, {
+			"value": "Alive",
+			"label": "Alive"
+		},
+		{
+			"value": "Dead",
+			"label": "Dead"
 		}
 	]
 
@@ -70,8 +77,12 @@ const CharacterComponent = (allChar) => {
 	function getFilteredList() {
 		if (!charFilter) {
 			return characters;
+		} else if (charFilter === "Male" || "Female") {
+			return characters.filter((item) => item.gender === charFilter);
+		} else {
+			console.log('g----')
+			return characters.filter((item) => item.status === charFilter);
 		}
-		return characters.filter((item) => item.gender === charFilter);
 	}
 	var filteredList = getFilteredList();
 
@@ -87,52 +98,31 @@ const CharacterComponent = (allChar) => {
 					)
 				}
 			}
-			else if (charFilter !== "") {
-				return filteredList
-			}
+			// 	else if (charFilter !== "") {
+			// filteredList
+			// 	}
 		});
 
 
 
 	// Add to Fav
-	const removeFav = (id) => {
-		setTempFav(false)
-		setFavCharacter(state => [...state, id])
-		localStorage.removeItem('id', id);
-	}
 
 	const handleFav = (character) => {
-		// setTempFav(true)
-		let oldData =JSON.parse(localStorage.getItem('data.app') || "[]")
-		if(favCharacter.includes(character.id)){
-			oldData = oldData.filter((c) =>c.id !== character.id)
-		}else{
+		let oldData = JSON.parse(localStorage.getItem('data.app') || "[]")
+		if (favCharacter.includes(character.id)) {
+			oldData = oldData.filter((c) => c.id !== character.id)
+		} else {
 			oldData.push(character)
 		}
-    localStorage.setItem('data.app', JSON.stringify(oldData))
-		console.log('id---',oldData)
+		localStorage.setItem('data.app', JSON.stringify(oldData))
 		handleFavState()
-		// setFavCharacter(state => [...state, id])
-		// localStorage.setItem('id', favCharacter);
 	}
-const handleFavState =()=>{
-	let oldData =JSON.parse(localStorage.getItem('data.app') || "[]")
-	let temp =oldData.map((character) => character.id)
-	setFavCharacter([...temp])
-}
-
-
-	const setDataToLocalStorage = async () => {
-		try {
-			localStorage.setItem('data', JSON.stringify(characters))
-		} catch (err) {
-			console.log(err)
-		}
+	const handleFavState = () => {
+		let oldData = JSON.parse(localStorage.getItem('data.app') || "[]")
+		let temp = oldData.map((character) => character.id)
+		setFavCharacter([...temp])
 	}
 
-	useEffect(() => {
-		// setDataToLocalStorage()
-	}, []);
 
 	useEffect(() => {
 		if (search !== "") {
@@ -146,20 +136,27 @@ const handleFavState =()=>{
 
 		return (
 			<>
-				<div className="col-md-3 animated fadeIn mt-8" key={id}>
-					<div className="card">
+				<div className="col" key={id}>
+					<div className="card h-100 shadow-sm">
+						<a href='#'>
+							<img src={image} className="card-img-top" alt="" />
+						</a>
 						<div className="card-body">
 							<Link to={`/character_details/${id}`}>
-								<div className="avatar">
-									<img src={image} className="card-img-top" alt="" />
-								</div>
 								<h6 className="card-title text-center">{name}</h6>
 								<p className="card-text text-center">Gender: {gender}</p>
 								<p className="card-text text-center">Species: {species}</p>
 								<p className="card-text text-center">Status: {status}</p>
-
 							</Link>
-							<button className='btn btn-primary button' onClick={() =>handleFav(character)}>{favCharacter.includes(character.id)? "Remove" : "Add"}</button>
+							<a onClick={() => handleFav(character)}>{favCharacter.includes(character.id) ?
+								<img
+									src={require('../../asserts/heart.svg').default}
+									alt="empty"
+								/>
+								: <img
+									src={require('../../asserts/empty.svg').default}
+									alt="empty"
+								/>}</a>
 							{/* {tempFav ?
 								<img
 									src={require('../../asserts/heart.svg').default}
@@ -181,14 +178,7 @@ const handleFavState =()=>{
 
 	return (
 		<>
-			<input
-				className="form-control mb-4"
-				type="search"
-				placeholder="Search"
-				aria-label="Search"
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
+
 
 			<h3>Filter</h3>
 			<select
@@ -204,6 +194,14 @@ const handleFavState =()=>{
 					);
 				})}
 			</select>
+			<input
+				className="form-control mb-4"
+				type="search"
+				placeholder="Search"
+				aria-label="Search"
+				value={search}
+				onChange={(e) => setSearch(e.target.value)}
+			/>
 			<br />
 
 			{/* <p>Gender</p>

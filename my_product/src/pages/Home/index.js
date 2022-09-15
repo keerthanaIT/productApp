@@ -1,7 +1,7 @@
 // import FetchCharacterApi from "../../Apis/FetchApis"
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 import CharacterComponent from "../CharacterComponent";
-import { useSelector, useDispatch } from 'react-redux';
+import {  useDispatch } from 'react-redux';
 import { CHARACTER } from "../../Apis";
 import { setCharacters, setCharactersInfo } from '../../redux/actions';
 import ReactPaginate from 'react-paginate';
@@ -40,8 +40,8 @@ const Home = () => {
 
 	return (
 		<div>
-			<div className="container py-4">
-				<div className="row">
+			<div className="container-fluid bg-trasparent my-4 p-3 position-relative">
+				<div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
 				<CharacterComponent />
 				<ReactPaginate 
 				previousLabel={"previous"}
