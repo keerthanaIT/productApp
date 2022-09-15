@@ -101,11 +101,26 @@ const CharacterComponent = (allChar) => {
 		localStorage.removeItem('id', id);
 	}
 
-	const addFav = (id) => {
-		setTempFav(true)
-		setFavCharacter(state => [...state, id])
-		localStorage.setItem('id', favCharacter);
+	const handleFav = (character) => {
+		// setTempFav(true)
+		let oldData =JSON.parse(localStorage.getItem('data.app') || "[]")
+		if(favCharacter.includes(character.id)){
+			oldData = oldData.filter((c) =>c.id !== character.id)
+		}else{
+			oldData.push(character)
+		}
+    localStorage.setItem('data.app', JSON.stringify(oldData))
+		console.log('id---',oldData)
+		handleFavState()
+		// setFavCharacter(state => [...state, id])
+		// localStorage.setItem('id', favCharacter);
 	}
+const handleFavState =()=>{
+	let oldData =JSON.parse(localStorage.getItem('data.app') || "[]")
+	let temp =oldData.map((character) => character.id)
+	setFavCharacter([...temp])
+}
+
 
 	const setDataToLocalStorage = async () => {
 		try {
@@ -144,7 +159,8 @@ const CharacterComponent = (allChar) => {
 								<p className="card-text text-center">Status: {status}</p>
 
 							</Link>
-							{tempFav ?
+							<button className='btn btn-primary button' onClick={() =>handleFav(character)}>{favCharacter.includes(character.id)? "Remove" : "Add"}</button>
+							{/* {tempFav ?
 								<img
 									src={require('../../asserts/heart.svg').default}
 									alt="empty"
@@ -154,7 +170,7 @@ const CharacterComponent = (allChar) => {
 									src={require('../../asserts/empty.svg').default}
 									alt="empty"
 									onClick={() => addFav(id)}
-								/>}
+								/>} */}
 						</div>
 
 					</div>
