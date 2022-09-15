@@ -1,1 +1,1 @@
-# productApp
+# Rick and Morty show App
