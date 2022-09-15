@@ -1,0 +1,11 @@
+.card{
+  cursor: pointer;
+  padding: 1rem;
+}
+.col-md-3{
+  padding-bottom: 2rem;
+}
+.card a{
+  color: black;
+  text-decoration: none
+}
