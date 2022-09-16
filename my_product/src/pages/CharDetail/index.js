@@ -30,16 +30,19 @@ const CharDetails = () => {
 		<div>
 			<div class="container p-4">
 				<div class="row">
-					<div class="col-5">
-						<img src={image} alt="" />
+				<div class="col-4">
 					</div>
-					<div class="col-7">
-						<h2>Name: {name}</h2>
+					<div class="col-6">
+						<img src={image} alt="" />
+					
+						<h2>{name}</h2>
 						<p>Gender: {gender}</p>
 						<p>Species: {species}</p>
 						<p>Status: {status}</p>
+						</div>
+				</div>
+				<div class="col-2">
 
-					</div>
 				</div>
 			</div>
 		</div>

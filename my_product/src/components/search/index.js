@@ -1,57 +1,29 @@
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from "react-router-dom";
-
+import { setCharactersPaginationOne, setCharactersSearch } from "../../redux/actions";
+import './index.css'
 
 const Search = () => {
-	const characters = useSelector((state => state.allCharacters.characters))
-	const [search , setSearch] = useState('');
-
-	const onSearch = (e) =>{
-		setSearch(e.target.value)
-	}
-let searchChar = characters.filter(char => {
-	return Object.keys(char).some(key => 
-		char[key].toString().toLowerCase().includes(search.toString().toLowerCase())
-		)
-
-});
-
-	console.log('search--',search)
+	
+	const intialSearch= useSelector((state => state.characterSearch.characterSearch))
+	const pageCount = useSelector((state => state.characterPgNum.characterspgnation.characterspgnation)) 
+	const dispatch = useDispatch();
 
 	return (
-		<div>
-			<input
-				className="form-control me-2"
-				type="search"
-				placeholder="Search"
-				aria-label="Search"
-				value={search}
-				onChange={onSearch}
+		<>
+		<form className="d-flex flex-sm-row flex-column align-items-center justify-content-center gap-4 mb-5">
+      <input 
+			placeholder="Search" 
+			type="text" 
+			className="custom-input" 
+			onChange={(e) =>{ 
+				dispatch(setCharactersPaginationOne(1))
+				dispatch(setCharactersSearch(e.target.value))
+			}} 
 			/>
-			{searchChar.map((char , i) =>{
-				return(
-					<>
-					<div className="col-md-3 animated fadeIn" key={char.id}>
-						<div className="card">
-						<Link to={`/character_details/${char.id}`}>
-							<div className="card-body">
-								<div className="avatar">
-									<img src={char.image} className="card-img-top" alt="" />
-								</div>
-								<h6 className="card-title text-center">{char.name}</h6>
-								<p className="card-text text-center">Gender: {char.gender}</p>
-								<p className="card-text text-center">Species: {char.species}</p>
-								<p className="card-text text-center">Status: {char.status}</p>
-							</div>
-						</Link>
-						</div>
-					</div>
-					</>
-				)
-			})}
-		
-		</div>
+		</form>
+		</>
 	)
 }
 

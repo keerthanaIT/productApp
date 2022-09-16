@@ -34,3 +34,37 @@ export const setCharactersInfo = (charactersInfo) =>{
         payload:charactersInfo
     }
 }
+
+export const setCharactersPagination = (charactersPgNum) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_PG_NUM,
+        payload:charactersPgNum
+    }
+}
+export const setCharactersPaginationOne = (charactersPgNumOne) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_PG_NUM_ONE,
+        payload:charactersPgNumOne
+    }
+}
+
+export const setCharactersPaginationNext = (charactersPgNumNext) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_PG_NEXT,
+        payload:charactersPgNumNext
+    }
+}
+
+export const setCharactersPaginationPrev = (charactersPgNumPrev) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_PG_PREV,
+        payload:charactersPgNumPrev
+    }
+}
+
+export const setCharactersSearch = (characterSearch) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_SEARCH,
+        payload:characterSearch
+    }
+}

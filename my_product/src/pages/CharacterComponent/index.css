@@ -1,0 +1,14 @@
+.custom-badge{
+    top:10px;
+    right: 20px;
+    font-size: 17px;
+}
+.card{
+    /* background: #fff; */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+   border: 2px solid gray;
+    border-radius: 1rem;
+}
+.img{
+    border-radius: 10px 10px 0 0;
+}

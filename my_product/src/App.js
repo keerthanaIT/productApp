@@ -11,6 +11,7 @@ function App() {
     <div className="App">
       <header className="App-header overflow-hidden">
       <Navbar />
+        <h1 className='text-center my-4'>Rick and Morty Show App</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character_details/:characterId" element={<CharDetails />} />

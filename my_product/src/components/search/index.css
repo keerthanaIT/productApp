@@ -1,0 +1,12 @@
+.custom-input {
+    width: 40%;
+    border-radius: 8px;
+    border: 2px solid gray;
+    padding: 10px 15px;
+}
+@media (max-width: 576px) {
+    .custom-input{
+        width: 80%;
+    }
+    
+}

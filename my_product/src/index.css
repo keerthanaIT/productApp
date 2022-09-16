@@ -2,12 +2,7 @@
   font-family: Arial,sans-serif !important;
 }
 
-.card{
-  background: #fff;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
- border: 0;
-  border-radius: 1rem;
-}
+
 .card-img,
 .card-img-top {
     border-top-left-radius: calc(1rem - 1px);

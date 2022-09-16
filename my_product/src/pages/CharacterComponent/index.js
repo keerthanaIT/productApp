@@ -2,6 +2,8 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import './index.css'
+import Search from '../../components/search';
 // import { useMemo } from 'react';
 // import { CHARACTER_ALIVE, CHARACTER_DEAD, CHARACTER_MALE, CHARACTER_FEMALE } from '../../Apis';
 
@@ -11,9 +13,7 @@ const CharacterComponent = (allChar) => {
 
 	const characters = useSelector((state => state.allCharacters.characters))
 	const [search, setSearch] = useState('');
-	const [char, setChar] = useState(characters);
 	const [charFilter, setCharFilter] = useState("");
-	const [tempFav, setTempFav] = useState(false)
 	const [favCharacter, setFavCharacter] = useState([])
 
 	// Search and Filter
@@ -57,20 +57,19 @@ const CharacterComponent = (allChar) => {
 
 	// All characters 
 	const renderChacters = searchChar.map((character) => {
-		const { id, name, gender, species, image, status } = character;
+		const { id, name, gender, location,species, image, status } = character;
 
 		return (
 			<>
-				<div className="col" key={id}>
-					<div className="card h-100 shadow-sm">
+				<div className="col-lg-4 col-md-6 col-12 mb-4 position-relative" key={id}>
+					<div className="card shadow-sm d-flex flex-column justify-content-center">
 						<Link to={`/character_details/${id}`}>
 							<img src={image} className="card-img-top" alt="" />
 						</Link>
 						<div className="card-body">
-							<h6 className="card-title text-center">{name}</h6>
-							<p className="card-text text-center">Gender: {gender}</p>
-							<p className="card-text text-center">Species: {species}</p>
-							<p className="card-text text-center">Status: {status}</p>
+							<h6 className="card-title text-center  fw-bold mb-4">{name}</h6>
+							<div className='fs-6'>Gender: {gender}</div>
+							<div className='fs-6 mb-4'>Species: {species}</div>
 							<a onClick={() => handleFav(character)}>
 								{favCharacter.includes(character.id) ?
 									<img
@@ -85,6 +84,13 @@ const CharacterComponent = (allChar) => {
 							</a>
 						</div>
 					</div>
+					{(status === "Dead") ?
+					<div className=" position-absolute badge bg-danger custom-badge">{status}</div> : 
+					(status === "Alive") ?
+					<div className="position-absolute badge bg-success custom-badge ">{status}</div> : 
+					<div className=" position-absolute badge bg-secondary custom-badge">{status}</div>
+					}
+					
 				</div>
 			</>
 		)
@@ -92,18 +98,9 @@ const CharacterComponent = (allChar) => {
 
 	return (
 		<>
-			<input
-				className="form-control mb-4"
-				type="search"
-				placeholder="Search"
-				aria-label="Search"
-				value={search}
-				onChange={(e) => setSearch(e.target.value)}
-			/>
-			<br />
+			{/* <Search search={search} setSearch={setSearch}/> */}
+			{/* <br /> */}
 			{renderChacters}
-
-
 		</>
 	)
 };
