@@ -14,6 +14,10 @@ export const characterReducer = (state = initialState, {type, payload}) =>{
     switch(type){
         case ActionType.SET_CHARACTERS:
             return {...state, characters:payload }
+        case ActionType.PER_PAGE_CHARACTERS:
+            return {...state, characters:payload }
+        case ActionType.FILTER_CHARACTERS:
+            return {...state, characters:payload }
         default:
             return state
     }

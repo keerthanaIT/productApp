@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import CharDetails from './pages/CharDetail';
 import Navbar from './components/Navbar';
 import { Route, Routes } from "react-router-dom";
-import Characters from './pages/Chacters';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/all_character" element={<Characters />} />
         <Route path="/character_details/:characterId" element={<CharDetails />} />
         <Route>404 not found</Route>
       </Routes>

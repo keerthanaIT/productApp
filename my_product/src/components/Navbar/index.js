@@ -26,11 +26,11 @@ const Navbar = () => {
                                     Home
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink className="nav-link" to="/all_character">
                                     Characters
                                 </NavLink>
-                            </li>
+                            </li> */}
 
                         </ul>
                         {/* <NavLink className="navbar-brand fw-bolder fs-4 mx-auto" to="/">

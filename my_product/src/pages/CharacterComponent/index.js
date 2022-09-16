@@ -16,76 +16,6 @@ const CharacterComponent = (allChar) => {
 	const [tempFav, setTempFav] = useState(false)
 	const [favCharacter, setFavCharacter] = useState([])
 
-	// Constants
-	const genderOptions = [
-		{
-			"value": "Male",
-			"label": "Male"
-		},
-		{
-			"value": "Female",
-			"label": "Female"
-		}, {
-			"value": "Alive",
-			"label": "Alive"
-		},
-		{
-			"value": "Dead",
-			"label": "Dead"
-		}
-	]
-
-	// // Filter Alive
-	// const getCharacterAlive = async () => {
-	// 	const res = await fetch(
-	// 		CHARACTER_ALIVE
-	// 	)
-	// 	const data = await res.json();
-	// }
-
-	// // Filter Dead
-	// const getCharacterDead = async () => {
-	// 	const res = await fetch(
-	// 		CHARACTER_DEAD
-	// 	)
-	// 	const data = await res.json();
-	// }
-
-	// // Filter Male
-	// const getCharacterMale = async () => {
-	// 	const res = await fetch(
-	// 		CHARACTER_MALE
-	// 	)
-	// 	const data = await res.json();
-	// }
-
-	// const getCharacterFemale = async () => {
-	// 	const res = await fetch(
-	// 		CHARACTER_FEMALE
-	// 	)
-	// 	const data = await res.json();
-	// }
-
-
-	// 	useEffect= () =>{
-	// 		getCharacterAlive()
-	// 		getCharacterDead()
-	// 		getCharacterMale()
-	// 		getCharacterFemale()
-	// 	}
-
-	function getFilteredList() {
-		if (!charFilter) {
-			return characters;
-		} else if (charFilter === "Male" || "Female") {
-			return characters.filter((item) => item.gender === charFilter);
-		} else {
-			console.log('g----')
-			return characters.filter((item) => item.status === charFilter);
-		}
-	}
-	var filteredList = getFilteredList();
-
 	// Search and Filter
 	let searchChar =
 		characters.filter(char => {
@@ -98,12 +28,7 @@ const CharacterComponent = (allChar) => {
 					)
 				}
 			}
-			// 	else if (charFilter !== "") {
-			// filteredList
-			// 	}
 		});
-
-
 
 	// Add to Fav
 
@@ -167,20 +92,6 @@ const CharacterComponent = (allChar) => {
 
 	return (
 		<>
-			<h3>Filter</h3>
-			<select
-				className="px-2 py-1 border mb-4"
-				value={charFilter}
-				onChange={(e) => setCharFilter(e.target.value)}
-			>
-				{genderOptions.map((option, i) => {
-					return (
-						<option className="py-2" value={option.value} key={i}>
-							{option.label}
-						</option>
-					);
-				})}
-			</select>
 			<input
 				className="form-control mb-4"
 				type="search"
@@ -190,38 +101,6 @@ const CharacterComponent = (allChar) => {
 				onChange={(e) => setSearch(e.target.value)}
 			/>
 			<br />
-
-			{/* <p>Gender</p>
-			<div class="container">
-  <div className="row">
-    <div className="col-12 col-md-1">
-       <form>
-        <button className="btn btn-primary" >Male </button>
-       </form>
-    </div>
-    <div className="col-12 col-md-1">
-      <form>
-        <button className="btn btn-primary">Female </button>
-       </form>
-    </div>
-  </div>
-</div>
-<p>Status</p>
-			<div class="container">
-  <div className="row">
-    <div className="col-12 col-md-1">
-       <form>
-        <button className="btn btn-primary" type="submit" >Alive </button>
-       </form>
-    </div>
-    <div className="col-12 col-md-1">
-      <form>
-        <button className="btn btn-primary" type="submit">Dead </button>
-       </form>
-    </div>
-  </div>
-</div> */}
-
 			{renderChacters}
 
 

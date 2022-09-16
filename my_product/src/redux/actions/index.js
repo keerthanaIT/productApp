@@ -7,6 +7,20 @@ export const setCharacters = (characters) =>{
     }
 }
 
+export const filterCharacters = (characters) =>{
+    return{
+        type: ActionType.FILTER_CHARACTERS,
+        payload:characters
+    }
+}
+
+export const setPerPageCharacters = (characters) =>{
+    return{
+        type: ActionType.PER_PAGE_CHARACTERS,
+        payload:characters
+    }
+}
+
 export const selectedCharacter = (character) =>{
     return{
         type: ActionType.SELECTED_CHARACTER,
