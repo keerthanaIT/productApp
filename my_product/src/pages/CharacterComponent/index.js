@@ -68,8 +68,8 @@ const CharacterComponent = (allChar) => {
 						</Link>
 						<div className="card-body">
 							<h6 className="card-title text-center  fw-bold mb-4">{name}</h6>
-							<div className='fs-6'>Gender: {gender}</div>
-							<div className='fs-6 mb-4'>Species: {species}</div>
+							<div className='fs-6 text-center'>Gender: {gender}</div>
+							<div className='fs-6 mb-4 text-center'>Species: {species}</div>
 							<a onClick={() => handleFav(character)}>
 								{favCharacter.includes(character.id) ?
 									<img
@@ -98,8 +98,6 @@ const CharacterComponent = (allChar) => {
 
 	return (
 		<>
-			{/* <Search search={search} setSearch={setSearch}/> */}
-			{/* <br /> */}
 			{renderChacters}
 		</>
 	)

@@ -27,15 +27,15 @@ const FilterCharacter = () => {
 				<div class="col-12 col-lg-3 mb-5">
 					<h5 className="fw-bold fs-4 mb-2 text-center">Filter</h5>
 					<div className="row mt-4">
-						<div className="col-4 col-sm-12">
-							<h6 className="text-start">Gender </h6>
+						<div className="col-12 col-sm-12">
+							<h6 className="text-start mb-4">Gender </h6>
 						</div>
-						<div className="col-4 col-sm-12">
+						<div className="col-12">
 							<form>
 								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("gender=male", e) }} >Male </button>
 							</form>
 						</div>
-						<div className="col-4 col-sm-12">
+						<div className="col-12">
 							<form>
 								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("gender=female", e) }} >Female </button>
 							</form>
@@ -43,19 +43,19 @@ const FilterCharacter = () => {
 					</div>
 					<div className="row mt-4">
 						<div className="col-4 col-sm-12">
-							<h6 className="text-start">Status </h6>
+							<h6 className="text-start mb-4">Status </h6>
 						</div>
-						<div className="col-4 col-sm-12 ">
+						<div className="col-12 ">
 							<form>
 								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=alive", e) }} >Alive </button>
 							</form>
 						</div>
-						<div className="col-4 col-sm-12">
+						<div className="col-12">
 							<form>
 								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=dead", e) }} >Dead </button>
 							</form>
 						</div>
-						<div className="col-4 col-sm-12">
+						<div className="col-12">
 							<form>
 								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=unknown", e) }} >Unknown </button>
 							</form>

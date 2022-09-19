@@ -54,7 +54,7 @@ let getAllCharactersApi = `${CHARACTER}?page=${intialPageCount}&name=${intialSea
 		<div>
 			<Search />
 			<div className="container-fluid bg-trasparent my-4 p-3 position-relative">
-				<div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+				<div className="row row-cols-1 row-cols-xs-2 row-cols-sm-12 row-cols-md-12 row-cols-lg-4 g-3">
 					<div className="col-3 col-md-12">
 						<FilterCharacter />
 					</div>
