@@ -38,7 +38,7 @@ export const characterPgNum = (state = initialPaginationState, {type, payload}) 
             case ActionType.SET_CHARACTERS_PG_PREV:
                 return {...state, characterspgnation:state.characterspgnation - 1 }
             case ActionType.SET_CHARACTERS_PG_NUM_ONE:
-                console.log('--f--',state)
+                console.log('--2--',state)
                 return {...state, characterspgnation: payload }
 
         default:

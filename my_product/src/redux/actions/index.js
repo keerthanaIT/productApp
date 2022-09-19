@@ -42,6 +42,7 @@ export const setCharactersPagination = (charactersPgNum) =>{
     }
 }
 export const setCharactersPaginationOne = (charactersPgNumOne) =>{
+    console.log('1=----',charactersPgNumOne)
     return{
         type: ActionType.SET_CHARACTERS_PG_NUM_ONE,
         payload:charactersPgNumOne

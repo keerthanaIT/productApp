@@ -28,8 +28,9 @@ const CharDetails = () => {
 	}, [characterId]);
 	return (
 		<div>
-			<div class="container p-4">
+			<div class="container-fluid p-4">
 				<div class="row">
+				<div class="col-12">
 				<div class="col-4">
 					</div>
 					<div class="col-6">
@@ -44,6 +45,7 @@ const CharDetails = () => {
 				<div class="col-2">
 
 				</div>
+				</div>	
 			</div>
 		</div>
 	)
