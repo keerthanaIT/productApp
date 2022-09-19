@@ -69,3 +69,17 @@ export const setCharactersSearch = (characterSearch) =>{
         payload:characterSearch
     }
 }
+
+export const setCharactersFilter = (characterFilter) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_FILTER,
+        payload:characterFilter
+    }
+}
+
+export const setCharactersGenFilter = (characterGenFilter) =>{
+    return{
+        type: ActionType.SET_CHARACTERS_GEN_FILTER,
+        payload:characterGenFilter
+    }
+}

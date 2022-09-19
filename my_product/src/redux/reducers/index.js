@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { characterPgNum, characterReducer, characterReducerInfo, characterSearch, selectedCharacterReducer } from './characterReducer';
+import { characterFilter, characterGenFilter, characterPgNum, characterReducer, characterReducerInfo, characterSearch, selectedCharacterReducer } from './characterReducer';
 
 const reducers = combineReducers({
     allCharacters: characterReducer,
@@ -7,6 +7,8 @@ const reducers = combineReducers({
     characterInfo : characterReducerInfo,
     characterPgNum: characterPgNum,
     characterSearch:characterSearch,
+    characterFilter: characterFilter,
+    characterGenFilter:characterGenFilter
 })
 
 export default reducers;

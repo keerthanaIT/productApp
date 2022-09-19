@@ -1,34 +1,29 @@
 
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import './index.css'
-import Search from '../../components/search';
-// import { useMemo } from 'react';
-// import { CHARACTER_ALIVE, CHARACTER_DEAD, CHARACTER_MALE, CHARACTER_FEMALE } from '../../Apis';
+import NotFoundPage from '../NotFound';
 
 
-const CharacterComponent = (allChar) => {
-
+const CharacterComponent = () => {
 
 	const characters = useSelector((state => state.allCharacters.characters))
-	const [search, setSearch] = useState('');
-	const [charFilter, setCharFilter] = useState("");
 	const [favCharacter, setFavCharacter] = useState([])
 
 	// Search and Filter
-	let searchChar =
-		characters.filter(char => {
-			if (charFilter === "") {
-				if (search === "") {
-					return characters;
-				} else if (search !== "") {
-					return Object.keys(char).some(key =>
-						char.name.toString().toLowerCase().includes(search.toString().toLowerCase())
-					)
-				}
-			}
-		});
+	// let searchChar =
+	// 	characters.filter(char => {
+	// 		if (charFilter === "") {
+	// 			if (search === "") {
+	// 				return characters;
+	// 			} else if (search !== "") {
+	// 				return Object.keys(char).some(key =>
+	// 					char.name.toString().toLowerCase().includes(search.toString().toLowerCase())
+	// 				)
+	// 			}
+	// 		}
+	// 	});
 
 	// Add to Fav
 
@@ -48,15 +43,8 @@ const CharacterComponent = (allChar) => {
 		setFavCharacter([...temp])
 	}
 
-
-	useEffect(() => {
-		if (search !== "") {
-			setCharFilter("");
-		}
-	}, [search]);
-
 	// All characters 
-	const renderChacters = searchChar.map((character) => {
+	const renderChacters = characters.map((character) => {
 		const { id, name, gender, location,species, image, status } = character;
 
 		return (
@@ -98,7 +86,12 @@ const CharacterComponent = (allChar) => {
 
 	return (
 		<>
-			{renderChacters}
+		{renderChacters}
+		{/* {console.log('characters----',characters)}
+		{characters == undefined ? 
+		<>{console.log('d-------------------------------------------')} <NotFoundPage /></> :
+		<>{console.log('not---------------------------------------')} {renderChacters}</>
+		 } */}
 		</>
 	)
 };

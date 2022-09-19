@@ -6,38 +6,18 @@ import { setCharacters, setCharactersInfo, setPerPageCharacters } from '../../re
 import FilterCharacter from "../../components/FilterCharacter";
 import Pagination from "../../components/Pagination";
 import Search from "../../components/search";
+import NotFoundPage from "../NotFound";
 
 const Home = () => {
 	const dispatch = useDispatch();
 	const intialPageCount= useSelector((state => state.characterPgNum.characterspgnation))
 	
 	const intialSearch= useSelector((state => state.characterSearch.characterSearch))
+	const intialFilter= useSelector((state => state.characterFilter.characterFilter))
+	const intialGenFilter= useSelector((state => state.characterGenFilter.characterGenFilter))
+	const characters = useSelector((state => state.allCharacters.characters))
 
-	// Single static page starts
-	const getAllCharacters = async () => {
-		const res = await fetch(
-			// `${CHARACTER}?page=${pgNum}`
-		)
-		const data = await res.json();
-		dispatch(setCharacters(data.results))
-		dispatch(setCharactersInfo(data.info))
-	}
-	// Single static page ends
-	// Dynamic page starts
-	const fetchCharacters = async (currentPage) => {
-		const res = await fetch(
-			`${CHARACTER}?page=${currentPage}`
-		)
-		const data = await res.json();
-		return data.results
-	}
-	// Dynamic page ends
-	const handlePageClick = async (data) => {
-		let currentPage = data.selected + 1;
-		const chacterFromPerPage = await fetchCharacters(currentPage)
-		dispatch(setPerPageCharacters(chacterFromPerPage))
-	}
-let getAllCharactersApi = `${CHARACTER}?page=${intialPageCount}&name=${intialSearch}`;
+let getAllCharactersApi = `${CHARACTER}?page=${intialPageCount}&name=${intialSearch}&status=${intialFilter}&gender=${intialGenFilter}`;
 	useEffect(() => {
 		(async () => {
 			const res = await fetch(
@@ -60,12 +40,12 @@ let getAllCharactersApi = `${CHARACTER}?page=${intialPageCount}&name=${intialSea
 					</div>
 					<div className="col-12 col-lg-8">
 						<div className="row">
-						<CharacterComponent />
+							{characters === undefined ? <NotFoundPage /> : <CharacterComponent />}
 						</div>
 					</div>
 				</div>
 			</div>
-			<Pagination />
+			{characters === undefined ? <NotFoundPage /> : <Pagination />}
 		</div>
 	)
 }

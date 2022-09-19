@@ -12,7 +12,12 @@ const initialPaginationState={
 const initialCharState={
     characterSearch:""
 }
-
+const initialFilterState={
+    characterFilter:""
+}
+const initialGenFilterState={
+    characterGenFilter:""
+}
 
 
 
@@ -38,7 +43,6 @@ export const characterPgNum = (state = initialPaginationState, {type, payload}) 
             case ActionType.SET_CHARACTERS_PG_PREV:
                 return {...state, characterspgnation:state.characterspgnation - 1 }
             case ActionType.SET_CHARACTERS_PG_NUM_ONE:
-                console.log('--2--',state)
                 return {...state, characterspgnation: payload }
 
         default:
@@ -47,14 +51,30 @@ export const characterPgNum = (state = initialPaginationState, {type, payload}) 
 }
 
 export const characterSearch = (state = initialCharState, {type, payload}) =>{
-    console.log('payload--',payload)
     switch(type){
         case ActionType.SET_CHARACTERS_SEARCH:
             return {...state, characterSearch:payload }
         default:
             return state
     }
+}
 
+export const characterFilter = (state = initialFilterState, {type, payload}) =>{
+    switch(type){
+        case ActionType.SET_CHARACTERS_FILTER:
+            return {...state, characterFilter:payload }
+        default:
+            return state
+    }
+}
+
+export const characterGenFilter = (state = initialGenFilterState, {type, payload}) =>{
+    switch(type){
+        case ActionType.SET_CHARACTERS_GEN_FILTER:
+            return {...state, characterGenFilter:payload }
+        default:
+            return state
+    }
 }
 
 

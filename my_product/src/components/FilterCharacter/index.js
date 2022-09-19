@@ -1,23 +1,18 @@
-import { CHARACTER } from "../../Apis";
-import { filterCharacters, setCharactersPaginationOne } from "../../redux/actions";
+import {  setCharactersFilter, setCharactersGenFilter, setCharactersPaginationOne } from "../../redux/actions";
 import { useDispatch } from 'react-redux';
 
 const FilterCharacter = () => {
 	const dispatch = useDispatch();
-	// Get Filter Character api starts
-	const fetchCharactersFilter = async (filter) => {
-		const res = await fetch(
-			`${CHARACTER}/?${filter}`
-		)
-		const data = await res.json();
-		return data.results
-	}
-	// Get Filter Character api ends
 
-	const handleFilterClick = async (filter, e) => {
+	const handleFilterClick = (e, filter) =>{
 		e.preventDefault()
-		const getCharMale = await fetchCharactersFilter(filter)
-		dispatch(filterCharacters(getCharMale))
+		dispatch(setCharactersFilter(filter))
+		dispatch(setCharactersPaginationOne(1))
+	}
+
+	const handleGenFilterClick = (e, filter) =>{
+		e.preventDefault()
+		dispatch(setCharactersGenFilter(filter))
 		dispatch(setCharactersPaginationOne(1))
 	}
 
@@ -32,12 +27,14 @@ const FilterCharacter = () => {
 						</div>
 						<div className="col-12">
 							<form>
-								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("gender=male", e) }} >Male </button>
+								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleGenFilterClick(e, "male")
+									
+									}} >Male </button>
 							</form>
 						</div>
 						<div className="col-12">
 							<form>
-								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("gender=female", e) }} >Female </button>
+								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleGenFilterClick(e, "female")}} >Female </button>
 							</form>
 						</div>
 					</div>
@@ -47,17 +44,23 @@ const FilterCharacter = () => {
 						</div>
 						<div className="col-12 ">
 							<form>
-								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=alive", e) }} >Alive </button>
+								<button className="btn btn-outline-info mb-2" onClick={(e) => { 
+									handleFilterClick(e, "Alive")
+									}} >Alive </button>
 							</form>
 						</div>
 						<div className="col-12">
 							<form>
-								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=dead", e) }} >Dead </button>
+								<button className="btn btn-outline-info mb-2" onClick={(e) => { 
+									handleFilterClick(e, "Dead")
+									}} >Dead </button>
 							</form>
 						</div>
 						<div className="col-12">
 							<form>
-								<button className="btn btn-outline-info mb-2" onClick={(e) => { handleFilterClick("status=unknown", e) }} >Unknown </button>
+								<button className="btn btn-outline-info mb-2" onClick={(e) => {
+									handleFilterClick(e, "unknown")
+									}} >Unknown </button>
 							</form>
 						</div>
 					</div>
